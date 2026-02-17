@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dristi</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='icon-192.png') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+
+
+
+
+</head>
+<body></body>
+    <audio id="clickSound" src="/static/click.mp3" preload="auto"></audio>
+    <video id="video" autoplay playsinline muted></video>
+
+    <div id="welcomeScreen" class="splash">
+      <img src="{{ url_for('static', filename='Welcome!.png') }}" />
+    </div>
+
+<!-- Visible, styled caption display -->
+<div id="captionBox" aria-live="polite">Listening for voice commands...</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/static/service-worker.js')
+            .then(() => console.log("✅ Service Worker registered"))
+            .catch(err => console.error("❌ Service Worker error:", err));
+        }
+      </script>
+      <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/static/service-worker.js');
+        }
+      </script>
+      
+</body>
+</html>
+
+
